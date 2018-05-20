@@ -1,0 +1,6 @@
+/Users/patrickquach/Documents/VSProjects/FractionCalculator/bin/Debug/FractionCalculator.exe
+/Users/patrickquach/Documents/VSProjects/FractionCalculator/bin/Debug/FractionCalculator.pdb
+/Users/patrickquach/Documents/VSProjects/FractionCalculator/obj/x86/Debug/FractionCalculator.csprojResolveAssemblyReference.cache
+/Users/patrickquach/Documents/VSProjects/FractionCalculator/obj/x86/Debug/FractionCalculator.csproj.CoreCompileInputs.cache
+/Users/patrickquach/Documents/VSProjects/FractionCalculator/obj/x86/Debug/FractionCalculator.exe
+/Users/patrickquach/Documents/VSProjects/FractionCalculator/obj/x86/Debug/FractionCalculator.pdb
