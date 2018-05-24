@@ -29,6 +29,7 @@ namespace FractionCalculator
 
             Numerator = num;
             Denominator = den;
+            simplify();
         }
 
         //overload the + operator
@@ -39,6 +40,7 @@ namespace FractionCalculator
                 Numerator = f1.Numerator * f2.Denominator + f2.Numerator * f1.Denominator,
                 Denominator = f1.Denominator * f2.Denominator
             };
+            sum.simplify();
             return sum;
         }
 
@@ -50,7 +52,7 @@ namespace FractionCalculator
                 Numerator = f1.Numerator * f2.Denominator - f2.Numerator * f1.Denominator,
                 Denominator = f1.Denominator * f2.Denominator
             };
-
+            diff.simplify();
             return diff;
         }
 
@@ -62,7 +64,7 @@ namespace FractionCalculator
                 Numerator = f1.Numerator * f2.Numerator,
                 Denominator = f1.Denominator * f2.Denominator
             };
-
+            product.simplify();
             return product;
         }
 
@@ -74,12 +76,33 @@ namespace FractionCalculator
                 Numerator = f1.Numerator * f2.Denominator,
                 Denominator = f1.Denominator * f2.Numerator
             };
-
+            quotient.simplify();
             return quotient;
         }
 
+        //find the greatest common denominator
+        public int GCD(int a, int b)   //gcd for simplification
+        {
+            if (b == 0)
+                return a;
+            return GCD(b, a % b);
+        }
+
+        //simplify the fraction
+        public void simplify()
+        {
+            int gcd = GCD(Numerator, Denominator);
+            Numerator = Numerator / gcd;
+            Denominator = Denominator / gcd;
+            if (Denominator < 0)
+            {
+                Denominator = -1 * Denominator;
+                Numerator = -1 * Numerator;
+            }
+        }
+
         //print object in fraction number format
-        public void Print()
+        public void Print() 
         {
             Console.WriteLine(Numerator + "/" + Denominator);
         }
@@ -89,14 +112,14 @@ namespace FractionCalculator
     {
         public static void Main(string[] args) 
         {
-            //we can do some switch statement to ask user
-            //to choose from (+, -, *, /)
+            Fraction f1 = new Fraction(-1, -2);
+            Fraction f2 = new Fraction(1, -2);
 
+            Console.Write("First fraction number = ");
+            f1.Print();
+            Console.Write("Second fraction number = ");
+            f2.Print();
 
-            //here is an example for what operator overloading can do
-            //u guys feel free to make changes
-            Fraction f1 = new Fraction(1, 2);
-            Fraction f2 = new Fraction(2, 3);
             Fraction sum = f1 + f2;
             Fraction diff = f1 - f2;
             Fraction product = f1 * f2;
