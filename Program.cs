@@ -1,72 +1,94 @@
 ﻿using System;
 
-namespace FractionCalculator {
-    public class Fraction {
-        private int numerator;
+namespace FractionCalculator 
+{
+    public class Fraction
+    {
+        // Class properties include Numerator and Denominator.
+
+        // This demonstrates auto-property initialization
+        public int Numerator { get; set; } = 0;
+
+        // This shows that writing a getter and setter is less verbose than
+        //writing a getter and setter in Java.
         private int denominator;
-
-        //default constructor
-        public Fraction() {
-
+        public int Denominator
+        {
+            get { return denominator; }
+            set { denominator = (value != 0) ? value : 1; }
         }
-
-        //constructor
-        public Fraction(int num, int den) {
-            if (den == 0) {
-                Console.WriteLine("Invalid input! Denominator cannot be 0. Initialize denominator to 1 by default");
+            
+        // Constructor with default arguments.
+        public Fraction(int num = 0, int den = 1)
+        {
+            if (den == 0)
+            {
+                Console.WriteLine("Invalid input! Denominator cannot be 0. Initialize Denominator to 1 by default");
                 den = 1;
             }
 
-            numerator = num;
-            denominator = den;
+            Numerator = num;
+            Denominator = den;
         }
 
         //overload the + operator
-        public static Fraction operator +(Fraction f1, Fraction f2) {
-            Fraction sum = new Fraction();
-            sum.numerator = f1.numerator * f2.denominator + f2.numerator * f1.denominator;
-            sum.denominator = f1.denominator * f2.denominator;
-
+        public static Fraction operator +(Fraction f1, Fraction f2)
+        {
+            Fraction sum = new Fraction
+            {
+                Numerator = f1.Numerator * f2.Denominator + f2.Numerator * f1.Denominator,
+                Denominator = f1.Denominator * f2.Denominator
+            };
             return sum;
         }
 
         //overload the - operator
-        public static Fraction operator -(Fraction f1, Fraction f2) {
-            Fraction diff = new Fraction();
-            diff.numerator = f1.numerator * f2.denominator - f2.numerator * f1.denominator;
-            diff.denominator = f1.denominator * f2.denominator;
+        public static Fraction operator -(Fraction f1, Fraction f2)
+        {
+            Fraction diff = new Fraction
+            {
+                Numerator = f1.Numerator * f2.Denominator - f2.Numerator * f1.Denominator,
+                Denominator = f1.Denominator * f2.Denominator
+            };
 
             return diff;
         }
 
         //overload the * operator
-        public static Fraction operator *(Fraction f1, Fraction f2) {
-            Fraction product = new Fraction();
-            product.numerator = f1.numerator * f2.numerator;
-            product.denominator = f1.denominator * f2.denominator;
+        public static Fraction operator *(Fraction f1, Fraction f2)
+        {
+            Fraction product = new Fraction
+            {
+                Numerator = f1.Numerator * f2.Numerator,
+                Denominator = f1.Denominator * f2.Denominator
+            };
 
             return product;
         }
 
         //overload the / operator
-        public static Fraction operator /(Fraction f1, Fraction f2) {
-            Fraction quotient = new Fraction();
-            quotient.numerator = f1.numerator * f2.denominator;
-            quotient.denominator = f1.denominator * f2.numerator;
+        public static Fraction operator /(Fraction f1, Fraction f2)
+        {
+            Fraction quotient = new Fraction
+            {
+                Numerator = f1.Numerator * f2.Denominator,
+                Denominator = f1.Denominator * f2.Numerator
+            };
 
             return quotient;
         }
 
         //print object in fraction number format
-        public void print() {
-            Console.WriteLine(numerator + "/" + denominator);
+        public void Print()
+        {
+            Console.WriteLine(Numerator + "/" + Denominator);
         }
-
     }
-
-
-    class MainClass {
-        public static void Main(string[] args) {
+    
+    class MainClass 
+    {
+        public static void Main(string[] args) 
+        {
             //we can do some switch statement to ask user
             //to choose from (+, -, *, /)
 
@@ -80,13 +102,13 @@ namespace FractionCalculator {
             Fraction product = f1 * f2;
             Fraction quotient = f1 / f2;
             Console.Write("sum = ");
-            sum.print();
+            sum.Print();
             Console.Write("diff = ");
-            diff.print();
+            diff.Print();
             Console.Write("product = ");
-            product.print();
+            product.Print();
             Console.Write("quotient = ");
-            quotient.print();
+            quotient.Print();
         }
     }
 }
